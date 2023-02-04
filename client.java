@@ -1,5 +1,7 @@
 import java.net.*;
 import java.io.*;
+import java.math.BigInteger;
+
 import javax.net.ssl.*;
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
@@ -68,6 +70,14 @@ public class client {
       Certificate[] cert = session.getPeerCertificates();
       String subject = ((X509Certificate) cert[0]).getSubjectX500Principal().getName();
       System.out.println("certificate name (subject DN field) on certificate received from server:\n" + subject + "\n");
+      
+      String issuer = ((X509Certificate) cert[0]).getIssuerX500Principal().getName();
+      System.out.println("Issuer name (issuer DN field) on certificate received from server:\n" + issuer + "\n");
+      
+      byte[] serialNumber = ((X509Certificate) cert[0]).getSerialNumber().toByteArray();
+      String serialNumberString = new BigInteger(serialNumber).toString(16);
+      System.out.println("Serial number (serial number DN field) on certificate received from server:\n" + serialNumberString + "\n");
+
       System.out.println("socket after handshake:\n" + socket + "\n");
       System.out.println("secure connection established\n\n");
 
