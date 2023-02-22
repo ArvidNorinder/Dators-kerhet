@@ -10,21 +10,26 @@ import java.time.format.DateTimeFormatter;
 public class Log {
     private File file; 
 
+    
+    public static void main(String[] args) {
+        Log log = new Log("./database/log.txt");
+    }
+
     public Log(String file) {
         this.file = new File(file);
     }
 
     public void log(String logString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime timeNow = LocalDateTime.now();
-        String formatDateTime = timeNow.format(formatter);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime timeNow = LocalDateTime.now();
+            String formatDateTime = timeNow.format(formatter);
         try {
-        PrintWriter writer = new PrintWriter(new FileWriter(file, true));
-
-        writer.append(formatDateTime + " ; " + logString + "\n");
-        writer.close();
+            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            writer.append(formatDateTime + " ; " + logString + "\n");
+            writer.close();
         } catch (IOException e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
     }
+
 }

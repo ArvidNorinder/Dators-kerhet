@@ -7,15 +7,29 @@ import javax.net.ssl.*;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.*;
 
 public class server implements Runnable {
   private ServerSocket serverSocket = null;
   private static int numConnectedClients = 0;
-  
+  private List<User> employees;
+  private Map<String , List<JournalEntry>> patients;
+  private Map<Integer, JournalEntry> journalEntries;
+
+
   public server(ServerSocket ss) throws IOException {
     serverSocket = ss;
     newListener();
   }
+
+  public void readJournals() {
+    patients = 
+  }
+
+  public void readEmployees() {
+
+  }
+
 
   public void run() {
     try {
