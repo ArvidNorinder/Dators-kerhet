@@ -23,7 +23,7 @@ public class server implements Runnable {
   }
 
   public void readJournals() {
-    patients = 
+    
   }
 
   public void readEmployees() {
