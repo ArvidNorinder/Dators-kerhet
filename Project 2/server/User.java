@@ -7,6 +7,7 @@ public class User {
     private String id; //Is a number combination
     private String role; 
     private String division;
+    private String currentlyTreating; //The patient the user is currently treating
     Set<String> patients;
 
     public User(String id, String role, String div) {
@@ -35,8 +36,16 @@ public class User {
         return division;
     }
 
+    public String getCurrentlyTreating() {
+        return currentlyTreating;
+    }
+
     public void addPatient(String patient) {
         patients.add(patient);
+    }
+
+    public void setCurrentlyTreating(String patient) {
+        currentlyTreating = patient;
     }
 
     public boolean isDivision(String div) {
@@ -49,6 +58,10 @@ public class User {
 
    public boolean hasPatient(String id) {
         return patients.contains(id);
+   }
+
+   public String getReport (String info) {
+    return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " " + getCurrentlyTreating();
    }
 
    @Override

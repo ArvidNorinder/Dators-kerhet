@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class JournalEntryParser { 
-    private File file; //The format of the record filelines is: recordID;date;Patient;Doctor;Nurse;Division
+    private File file; 
+    //The format of the record filelines is: recordID;date;Patient;Doctor;Nurse;Division
+    //Note: Should the entries contain any information about the patient?
     private FileReader reader;
 
     public JournalEntryParser(String file) throws FileNotFoundException {
