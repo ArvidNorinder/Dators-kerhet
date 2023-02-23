@@ -60,6 +60,14 @@ public class User {
         return patients.contains(id);
    }
 
+    public String getPatients() {
+        String patientList = "";
+        for (String patient : patients) {
+            patientList += patient + ",";
+        }
+        return patientList;
+    }
+
    public String getReport (String info) {
     return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " " + getCurrentlyTreating();
    }

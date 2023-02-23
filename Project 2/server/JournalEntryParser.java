@@ -54,8 +54,7 @@ public class JournalEntryParser {
             }
         }
         return patientEntries;
-
-        }
+    }
 
     
 
