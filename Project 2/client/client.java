@@ -20,6 +20,7 @@ import java.security.cert.*;
 public class client {
   public static void main(String[] args) throws Exception {
 
+    //TODO: Ask user for user name
     
     String host = null;
     int port = -1;
@@ -48,8 +49,10 @@ public class client {
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         SSLContext ctx = SSLContext.getInstance("TLSv1.2");
         // keystore password (storepass)
+
+        //TODO: Load in keystore depending on user name instead.
         ks.load(new FileInputStream("clientkeystore"), password);  
-        // truststore password (storepass);
+        // truststore password (storepass)
         ts.load(new FileInputStream("clienttruststore"), password); 
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here

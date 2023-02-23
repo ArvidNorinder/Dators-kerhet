@@ -1,0 +1,5 @@
+1. I client ser vi hur en keystore och en truststore hämtas med de hårdkodade namnen från projekt 1. När vi ej vet vilka personer
+är, och alltså vilken keystore som ska användas, så måste vi först be användaren specifiera användarnamnet som de vill logga in med.
+Alttså -> Be användaren om användarnamn. -> Utan feedback, be om lösenord. -> Försök att läsa in en keystore för det användarnamnet
+(kanske dumt att ha samma användarnamn som början på keystore, för då kan folk se vilka användare som finns.) -> hantera exception om
+inget sådant användarnamn finns, dvs ingen kopplad keystore.
