@@ -1,1 +1,4 @@
-1;2023:02:23;patient1;nurse1,doctor2;division1
+Hanna;Sofia;Niklas;division1;2023:02:23
+Hanna;Sofia;Niklas;division1;2023:02:23
+Arvid;Sofia;Niklas;division1;2023:02:23
+Arvid;Sofia;Niklas;division1;2023:02:23
