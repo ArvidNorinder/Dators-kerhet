@@ -7,6 +7,7 @@ import javax.net.ssl.*;
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
+import java.util.Scanner;
 
 /*
  * This example shows how to set up a key manager to perform client
@@ -21,6 +22,10 @@ public class client {
   public static void main(String[] args) throws Exception {
 
     //TODO: Ask user for user name
+    System.out.println("Enter username.");
+
+    Scanner scan = new Scanner(System.in);
+    String userName = scan.nextLine();
     
     String host = null;
     int port = -1;
@@ -51,9 +56,9 @@ public class client {
         // keystore password (storepass)
 
         //TODO: Load in keystore depending on user name instead.
-        ks.load(new FileInputStream("clientkeystore"), password);  
+        ks.load(new FileInputStream(userName + "keystore"), password);  
         // truststore password (storepass)
-        ts.load(new FileInputStream("clienttruststore"), password); 
+        ts.load(new FileInputStream(userName + "truststore"), password); 
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -87,15 +92,41 @@ public class client {
       System.out.println("socket after handshake:\n" + socket + "\n");
       System.out.println("secure connection established\n\n");
 
+      //TODO: Efter detta vill vi komma åt filer. Använd kod för att begränsa access frammöver
+
+      //låt användaren  skriva in mer hit, i form av antingen namn eller division.
+
+
+      //Se om strängen är en divison, annars se om strängen är ett namn
+
+      //Kolla accessrättigheter och ev. printa
+
       BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String msg;
       for (;;) {
+        System.out.println("Enter a division or patient name to list entries.");
         System.out.print(">");
         msg = read.readLine();
         if (msg.equalsIgnoreCase("quit")) {
           break;
+        } else if (equalsDivision(msg)) {
+          if(accessIsCorrect(subject)) {
+              //TODO: Ask if display or edit
+              System.out.println("Read or list entries? (r/l)");
+              String answer = read.readLine();
+              if(answer.equals("r")) {
+                printEntries(msg);
+              } else if (answer)
+
+              
+          }
+        } else if (equalsPatient(msg)) {
+          if(accessIsCorrect(subject)) {
+            //TODO: Ask if display or edit
+            printEntries(msg);
+          }
         }
         System.out.print("sending '" + msg + "' to server...");
         out.println(msg);
@@ -110,5 +141,13 @@ public class client {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  public boolean equalsDivision(String msg) {
+
+  }
+
+  public boolean equalsPatient(String msg) {
+
   }
 }
