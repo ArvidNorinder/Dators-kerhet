@@ -12,9 +12,9 @@ import java.util.*;
 public class server implements Runnable {
   private ServerSocket serverSocket = null;
   private static int numConnectedClients = 0;
-  private List<User> employees;
+  private List<User> users;
   private Map<String , List<JournalEntry>> patients;
-  private Map<Integer, JournalEntry> journalEntries;
+  private Map<String, List<JournalEntry>> journalEntries;
 
 
   public server(ServerSocket ss) throws IOException {
@@ -22,14 +22,22 @@ public class server implements Runnable {
     newListener();
   }
 
-  public void readJournals() {
-    
+  public void readJournals() throws FileNotFoundException {
+    JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
+    journalEntries = parser.read();
   }
-
+  
   public void readEmployees() {
-
+    UserParser parser = new UserParser("database/employees.txt");
+    users = parser.read();
   }
 
+  private void getRecordsForPatient (String patient) {
+    List<JournalEntry> entries = journalEntries.get(patient);
+    for (JournalEntry entry : entries) {
+      System.out.println(entry.toString());
+    }
+  }
 
   public void run() {
     try {

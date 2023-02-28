@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class User {
-    private String id; //Is a number combination
+    private String id; //Is a number combination???
     private String role; 
     private String division;
     private String currentlyTreating; //The patient the user is currently treating
@@ -62,6 +62,9 @@ public class User {
 
     public String getPatients() {
         String patientList = "";
+        if (patients == null) {
+            return null;
+        }
         for (String patient : patients) {
             patientList += patient + ",";
         }

@@ -34,4 +34,14 @@ public class JournalEntry {
     public String getDate() {
         return date;
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Patient ID: " + patientID + "\n");
+        sb.append(" Doctor: " + doctor + "\n");
+        sb.append(" Nurse: " + nurse + "\n");
+        sb.append(" Division: " + division + "\n");
+        sb.append(" Date: " + date + "\n");
+        return sb.toString();
+    }
 }
