@@ -138,7 +138,7 @@ public class client {
 
   private static void printEntriesSpecifyRecord(String msg, BufferedReader in, PrintWriter out, BufferedReader read) {
     try {
-      //Tell server that we want division entries for divison msg
+      //Tell server what we want
       out.println(msg);
       out.flush();
       //server will respond with filling the buffered reader.
@@ -151,6 +151,7 @@ public class client {
       }
       
       for (int i = 0; i < entries.size(); i++) {
+        //TODO make sure server does not send text in each line
         System.out.println(entries.get(i));
       }
 
@@ -161,7 +162,8 @@ public class client {
       //Let user specify one entry in range of structure length
       index = read.readLine();
       //Ask if display or edit
-      System.out.println("Read, edit or delete entry? (r/e/d)");
+      System.out.println("Read, edit, delete or create entry? (r/e/d/c)");
+      //TODO: Let doctors create new entry
       answer = read.readLine();
       if(answer.equalsIgnoreCase("r")) {
         out.println("r," +  entries.get(Integer.parseInt(index)));

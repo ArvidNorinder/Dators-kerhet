@@ -7,7 +7,6 @@ public class User {
     private String id; //Is a number combination???
     private String role; 
     private String division;
-    private String currentlyTreating; //The patient the user is currently treating
     Set<String> patients;
 
     public User(String id, String role, String div) {
@@ -24,6 +23,13 @@ public class User {
         patients = null;
     }
 
+    public boolean isPatient() {
+        if (patients == null)
+            return true;
+        else
+            return false;
+    }
+
     public String getID() {
         return id;
     }
@@ -36,16 +42,8 @@ public class User {
         return division;
     }
 
-    public String getCurrentlyTreating() {
-        return currentlyTreating;
-    }
-
     public void addPatient(String patient) {
         patients.add(patient);
-    }
-
-    public void setCurrentlyTreating(String patient) {
-        currentlyTreating = patient;
     }
 
     public boolean isDivision(String div) {
@@ -72,7 +70,7 @@ public class User {
     }
 
    public String getReport (String info) {
-    return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " " + getCurrentlyTreating();
+    return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " ";
    }
 
    @Override
