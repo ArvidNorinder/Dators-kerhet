@@ -17,4 +17,13 @@ public class permissionParser {
         if (user.) //TODO, add a function in user that return whether the user i a patient or not
 
     }
+
+    public boolean canRead (User user1, User user2) {
+        return null;
+    }
+
+    public boolean canEditAndCreate (User user1, User user2) {
+        return null;
+    }
 }
+    
