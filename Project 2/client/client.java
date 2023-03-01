@@ -170,12 +170,33 @@ public class client {
         out.flush();
         System.out.println(in.readLine());
       } else if (answer.equalsIgnoreCase("e")) {
-        System.out.println("Enter additional content");
+        System.out.println("Enter additional content: ");
         answer = read.readLine();
         out.println("e," + entries.get(Integer.parseInt(index)) + "," + answer);
         out.flush();
       } else if (answer.equalsIgnoreCase("d")) {
         out.println("d," +  entries.get(Integer.parseInt(index)));
+        out.flush();
+      } else if (answer.equalsIgnoreCase("c")) {
+        System.out.println("Enter patient name: ");
+        String patientName = read.readLine();
+
+        System.out.println("Enter doctor name: ");
+        String doctorName = read.readLine();
+
+        System.out.println("Enter nurse name: ");
+        String nurseName = read.readLine();
+
+        System.out.println("Enter division (divisionX): ");
+        String division = read.readLine();
+
+        System.out.println("Enter date (yyyy-mm-dd): ");
+        String information = read.readLine();
+
+        System.out.println("Enter information: ");
+        information = read.readLine();
+
+        out.println("c," + patientName + "," + doctorName + "," + nurseName + "," + division + "," + information);
         out.flush();
       }
     } catch (IOException e) {
