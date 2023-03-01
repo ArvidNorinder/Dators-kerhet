@@ -16,6 +16,7 @@ public class server implements Runnable {
   private List<User> users;
   private Map<String , List<JournalEntry>> patients;
   private Map<String, List<JournalEntry>> journalEntries;
+  private PermissionHandler permissionHandler = new PermissionHandler(new Log("database/log.txt"));
 
   private Map<String, User> certificateToUserMap = new HashMap<>();
   certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa522", new User("Government", "government"));
@@ -46,14 +47,14 @@ public class server implements Runnable {
 
   private void getRecordsForPatient (String patient) {
     List<JournalEntry> entries = journalEntries.get(patient);
-    for (JournalEntry entry : entries) {
-      System.out.println(entry.toString());
+    if (entries != null) {
+      for (JournalEntry entry : entries) {
+        System.out.println(entry.toString());
+      }
     }
   }
 
-  private void getAllowedRecords () {
-
-  }
+  
 
   public void run() {
     try {
