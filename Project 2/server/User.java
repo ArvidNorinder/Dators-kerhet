@@ -30,6 +30,18 @@ public class User {
             return false;
     }
 
+    public boolean isDoctor() {
+        return role.equals("doctor");
+    }
+
+    public boolean isNurse() {
+        return role.equals("nurse");
+    }
+
+    public boolean isGovernment() {
+        return role.equals("government");
+    }
+
     public String getID() {
         return id;
     }

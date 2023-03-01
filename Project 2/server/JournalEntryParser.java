@@ -21,7 +21,7 @@ public class JournalEntryParser {
     public static void main(String[] args) {
         try {
             JournalEntryParser parser = new JournalEntryParser("./database/journalEntries.txt");
-            JournalEntry entry = new JournalEntry("Arvid", "Sofia", "Niklas", "division1", "2023:02:23");
+            JournalEntry entry = new JournalEntry("Arvid", "Sofia", "Niklas", "division1", "2023:02:23", "Arvid är en bra patient");
             parser.write(entry);
             Map<String, List<JournalEntry>> patientEntries = parser.read();
             System.out.println(patientEntries);
@@ -39,18 +39,18 @@ public class JournalEntryParser {
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             String[] entry = data.split(";");
-            JournalEntry journalEntry = new JournalEntry(entry[0], entry[1], entry[2], entry[3], entry[4]);
+            JournalEntry journalEntry = new JournalEntry(entry[0], entry[1], entry[2], entry[3], entry[4], entry[5]);
             entries.add(journalEntry);
         }
         myReader.close();
 
         for (JournalEntry entry : entries) {
-            if (patientEntries.containsKey(entry.getpatientID())) {
-                patientEntries.get(entry.getpatientID()).add(entry);
+            if (patientEntries.containsKey(entry.getPatientID())) {
+                patientEntries.get(entry.getPatientID()).add(entry);
             } else {
                 List<JournalEntry> entryList = new ArrayList<JournalEntry>();
                 entryList.add(entry);
-                patientEntries.put(entry.getpatientID(), entryList);
+                patientEntries.put(entry.getPatientID(), entryList);
             }
         }
         return patientEntries;
@@ -62,7 +62,7 @@ public class JournalEntryParser {
         try {
 
             PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
-            writer.append(entry.getpatientID() + ";" + entry.getDoctor() + ";" + entry.getNurse() + ";" + entry.getDiv() + ";" + entry.getDate() + "\n");
+            writer.append(entry.getPatientID() + ";" + entry.getDoctor() + ";" + entry.getNurse() + ";" + entry.getDivision() + ";" + entry.getDate() + ";" + entry.getInfo() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
