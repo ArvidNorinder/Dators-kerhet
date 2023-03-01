@@ -97,6 +97,14 @@ public class server implements Runnable {
           System.out.println("done\n"); 
          */
         // 
+
+
+        //1. First string will be patient name.
+        //TODO: Read all entries that the current user should be able to see.
+        User us = certificateToUserMap.get(serialNumberString);
+
+        //Create file object to read from journal entries
+        permissionHandler.readPatientJournal(us, journalEntries.get(us.getID()));
       }
       in.close();
       out.close();
