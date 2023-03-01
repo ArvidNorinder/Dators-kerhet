@@ -16,6 +16,8 @@ public class server implements Runnable {
   private Map<String , List<JournalEntry>> patients;
   private Map<String, List<JournalEntry>> journalEntries;
 
+  private Map<String, User> certificateToUserMap = new HashMap<>();
+  //certificateToUserMap.add();
   //TODO: A function that returns a list of all the patients that a user is allowed to see
   //TODO: A function that returns a list of all the patients that a user is allowed to edit
   //TODO: A function that handles messages from the client (i.e. what to do when a client sends a message to the server)
@@ -64,6 +66,8 @@ public class server implements Runnable {
 
       byte[] serialNumber = ((X509Certificate) cert[0]).getSerialNumber().toByteArray();
       String serialNumberString = new BigInteger(serialNumber).toString(16);
+
+      //TODO: Use this serial number to map to a user. --> First create a map between users and their serial number.
       System.out.println("Serial number (serial number DN field) on certificate received from server:\n" + serialNumberString + "\n");
       
       System.out.println(numConnectedClients + " concurrent connection(s)\n");
@@ -74,6 +78,8 @@ public class server implements Runnable {
       in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
       String clientMsg = null;
+
+      //TODO: Handle client requests below
       while ((clientMsg = in.readLine()) != null) {
         String rev = new StringBuilder(clientMsg).reverse().toString();
         System.out.println("received '" + clientMsg + "' from client");
