@@ -137,52 +137,47 @@ public class client {
   }
 
   private static void printEntriesSpecifyRecord(String msg, BufferedReader in, PrintWriter out, BufferedReader read) {
-    //Tell server that we want division entries for divison msg
-    out.println(msg);
-    out.flush();
-    //server will respond with filling the buffered reader.
-    List<String> entries = new ArrayList<>();
-    String line;
+    try {
+      //Tell server that we want division entries for divison msg
+      out.println(msg);
+      out.flush();
+      //server will respond with filling the buffered reader.
+      List<String> entries = new ArrayList<>();
+      String line;
 
-    //Here the server only replies with entries that our role has access to.
-    while ((line = in.readLine()) != null) {
-        entries.add(line);
+      //Here the server only replies with entries that our role has access to.
+      while ((line = in.readLine()) != null) {
+          entries.add(line);
+      }
+      
+      for (int i = 0; i < entries.size(); i++) {
+        System.out.println(entries.get(i));
+      }
+
+      String index;
+      String answer;
+
+      System.out.println("Select an entry out of the printed, numbered in asceding order going down. " + entries.size() + " entries were printed.");
+      //Let user specify one entry in range of structure length
+      index = read.readLine();
+      //Ask if display or edit
+      System.out.println("Read, edit or delete entry? (r/e/d)");
+      answer = read.readLine();
+      if(answer.equalsIgnoreCase("r")) {
+        out.println("r," +  entries.get(Integer.parseInt(index)));
+        out.flush();
+        System.out.println(in.readLine());
+      } else if (answer.equalsIgnoreCase("e")) {
+        System.out.println("Enter additional content");
+        answer = read.readLine();
+        out.println("e," + entries.get(Integer.parseInt(index)) + "," + answer);
+        out.flush();
+      } else if (answer.equalsIgnoreCase("d")) {
+        out.println("d," +  entries.get(Integer.parseInt(index)));
+        out.flush();
+      }
+    } catch (IOException e) {
+
     }
-    
-    for (int i = 0; i < entries.size(); i++) {
-      System.out.println(entries.get(i));
-    }
-
-    String index;
-    String answer;
-
-    System.out.println("Select an entry out of the printed, numbered in asceding order going down. " + entries.size() + " entries were printed.");
-    //Let user specify one entry in range of structure length
-    index = read.readLine();
-    //Ask if display or edit
-    System.out.println("Read, edit or delete entry? (r/e/d)");
-    answer = read.readLine();
-    if(answer.equalsIgnoreCase("r")) {
-        
-    } else if (answer.equalsIgnoreCase("e")) {
-      edit
-    } else if (answer.equalsIgnoreCase("d")) {
-
-    }
-  }
-
-  private static List<String> getEntriesForDivision(String msg) {
-    return null;
-  }
-
-  private static void printEntries(String msg) {
-  }
-
-  public static boolean equalsDivision(String msg) {
-
-  }
-
-  public static boolean equalsPatient(String msg) {
-    
   }
 }
