@@ -9,14 +9,14 @@ public class User {
     private String division;
     Set<String> patients;
 
-    public User(String id, String role, String div) {
+    public User(String id, String role, String div) { //For Nurse and Doctor
         this.id = id;
         this.role = role;
         division = div;
         patients = new HashSet<String>();
     }
 
-    public User(String id, String role) {
+    public User(String id, String role) { //For Government and Patient
         this.id = id; 
         this.role = role;
         division = null;
