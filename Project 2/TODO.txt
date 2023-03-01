@@ -3,3 +3,6 @@
 Alttså -> Be användaren om användarnamn. -> Utan feedback, be om lösenord. -> Försök att läsa in en keystore för det användarnamnet
 (kanske dumt att ha samma användarnamn som början på keystore, för då kan folk se vilka användare som finns.) -> hantera exception om
 inget sådant användarnamn finns, dvs ingen kopplad keystore.
+
+när jag skrev in password vid import av certificat kan det ha blivit en felaktig end of line character. Vid problem,
+testa att lägga till enter tillpassword
