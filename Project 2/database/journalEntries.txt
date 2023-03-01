@@ -1,4 +1,4 @@
 Hanna;Sofia;Niklas;division1;2023:02:23;text
-Hanna;Sofia;Niklas;division1;2023:02:23
-Arvid;Sofia;Niklas;division1;2023:02:23
-Arvid;Sofia;Niklas;division1;2023:02:23
+Hanna;Sofia;Niklas;division1;2023:02:23;some entry info
+Arvid;Sofia;Niklas;division1;2023:02:23;
+Arvid;Sofia;Niklas;division1;2023:02:23;
