@@ -48,7 +48,6 @@ public class JournalEntry {
         sb.append(" Nurse: " + nurse + "\n");
         sb.append(" Division: " + division + "\n");
         sb.append(" Date: " + date + "\n");
-        sb.append(" Info: " + info + "\n");
         return sb.toString();
     }
 }
