@@ -85,28 +85,48 @@ public class server implements Runnable {
 
       String clientMsg = null;
 
-      //TODO: Handle client requests below
-      while ((clientMsg = in.readLine()) != null) {
-        //first thing we get from the client is either a patient name or 
-        //a division name
-        /*
-          String rev = new StringBuilder(clientMsg).reverse().toString();
-          System.out.println("received '" + clientMsg + "' from client");
-          System.out.print("sending '" + rev + "' to client...");
-          out.println(rev);
-          out.flush();
-          System.out.println("done\n"); 
-         */
-        // 
+      clientMsg = in.readLine();
+      User us = certificateToUserMap.get(serialNumberString);
+    //TODO: Handle client requests below
+      //first thing we get from the client is either a patient name or 
+      //a division name
+      /*
+        String rev = new StringBuilder(clientMsg).reverse().toString();
+        System.out.println("received '" + clientMsg + "' from client");
+        System.out.print("sending '" + rev + "' to client...");
+        out.println(rev);
+        out.flush();
+        System.out.println("done\n"); 
+        */
+      // 
 
+      //Create file object to read from journal entries
+      List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(us.getID()));
 
-        //1. First string will be patient name.
-        //TODO: Read all entries that the current user should be able to see.
-        User us = certificateToUserMap.get(serialNumberString);
-
-        //Create file object to read from journal entries
-        permissionHandler.readPatientJournal(us, journalEntries.get(us.getID()));
+      for(JournalEntry e: entriesToReturn) {
+        out.println(e.toString());
+        out.flush();
       }
+
+      while ((clientMsg = in.readLine()) != null) {
+        String[] msgParts = clientMsg.split(",");
+
+        if(msgParts[0].equals("r")) {
+          for (JournalEntry e : entriesToReturn) {
+            if (e.toString().equals(msgParts[1])) {
+              e.getInfo();
+            }
+          }
+        } else if(msgParts[0].equals("e")) {
+
+        } else if(msgParts[0].equals("d")) {
+
+        } else if(msgParts[0].equals("c")) {
+
+        }
+      }
+
+
       in.close();
       out.close();
       socket.close();

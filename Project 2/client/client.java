@@ -63,7 +63,7 @@ public class client {
         //TODO: Load in keystore depending on user name instead.
         ks.load(new FileInputStream(userName + "keystore"), password);  
         // truststore password (storepass)
-        ts.load(new FileInputStream(userName + "truststore"), password); 
+        ts.load(new FileInputStream("clienttruststore"), password); 
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -166,7 +166,7 @@ public class client {
       //TODO: Let doctors create new entry
       answer = read.readLine();
       if(answer.equalsIgnoreCase("r")) {
-        out.println("r," +  entries.get(Integer.parseInt(index)));
+        out.println("r," +  entries.get(Integer.parseInt(index)) + ",");
         out.flush();
         System.out.println(in.readLine());
       } else if (answer.equalsIgnoreCase("e")) {
@@ -175,7 +175,7 @@ public class client {
         out.println("e," + entries.get(Integer.parseInt(index)) + "," + answer);
         out.flush();
       } else if (answer.equalsIgnoreCase("d")) {
-        out.println("d," +  entries.get(Integer.parseInt(index)));
+        out.println("d," +  entries.get(Integer.parseInt(index)) + ",");
         out.flush();
       } else if (answer.equalsIgnoreCase("c")) {
         System.out.println("Enter patient name: ");
@@ -196,7 +196,7 @@ public class client {
         System.out.println("Enter information: ");
         information = read.readLine();
 
-        out.println("c," + patientName + "," + doctorName + "," + nurseName + "," + division + "," + information);
+        out.println("c," + patientName + ";" + doctorName + ";" + nurseName + ";" + division + ";" + information + ",");
         out.flush();
       }
     } catch (IOException e) {
