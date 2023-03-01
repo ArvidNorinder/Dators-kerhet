@@ -18,10 +18,6 @@ public class server implements Runnable {
   private Map<String, List<JournalEntry>> journalEntries;
 
   private Map<String, User> certificateToUserMap = new HashMap<>();
-  certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa522", new User("Government", "government"));
-  certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa523", new User("Sofia", "doctor", "division1"));
-  certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa524", new User("Oscar", "nurse", "division1"));
-  certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa525", new User("Arvid", "patient"));
 
   //TODO: A function that returns a list of all the patients that a user is allowed to see
   //TODO: A function that returns a list of all the patients that a user is allowed to edit
@@ -32,6 +28,10 @@ public class server implements Runnable {
   public server(ServerSocket ss) throws IOException {
     serverSocket = ss;
     newListener();
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa522", new User("Government", "government"));
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa523", new User("Sofia", "doctor", "division1"));
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa524", new User("Oscar", "nurse", "division1"));
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa525", new User("Arvid", "patient"));
   }
 
   public void readJournals() throws FileNotFoundException {
