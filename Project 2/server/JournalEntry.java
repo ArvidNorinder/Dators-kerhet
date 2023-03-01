@@ -17,7 +17,7 @@ public class JournalEntry {
         this.info = info;
       }
 
-    public String getpatientID() {
+    public String getPatientID() {
         return patientID; 
     }
 
@@ -29,7 +29,7 @@ public class JournalEntry {
         return nurse;
     }
 
-    public String getDiv() {
+    public String getDivision() {
         return division;
     }
 

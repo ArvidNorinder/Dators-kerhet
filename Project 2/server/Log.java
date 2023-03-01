@@ -14,8 +14,6 @@ public class Log {
     public static void main(String[] args) {
         Log log = new Log("./database/log.txt");
         User user = new User("Niklas", "nurse", "division1" );
-
-        user.setCurrentlyTreating("Tobias");
         log.log("treated", user);
     }
 

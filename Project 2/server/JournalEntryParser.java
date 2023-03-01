@@ -45,12 +45,12 @@ public class JournalEntryParser {
         myReader.close();
 
         for (JournalEntry entry : entries) {
-            if (patientEntries.containsKey(entry.getpatientID())) {
-                patientEntries.get(entry.getpatientID()).add(entry);
+            if (patientEntries.containsKey(entry.getPatientID())) {
+                patientEntries.get(entry.getPatientID()).add(entry);
             } else {
                 List<JournalEntry> entryList = new ArrayList<JournalEntry>();
                 entryList.add(entry);
-                patientEntries.put(entry.getpatientID(), entryList);
+                patientEntries.put(entry.getPatientID(), entryList);
             }
         }
         return patientEntries;
@@ -62,7 +62,7 @@ public class JournalEntryParser {
         try {
 
             PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
-            writer.append(entry.getpatientID() + ";" + entry.getDoctor() + ";" + entry.getNurse() + ";" + entry.getDiv() + ";" + entry.getDate() + ";" + entry.getInfo() + "\n");
+            writer.append(entry.getPatientID() + ";" + entry.getDoctor() + ";" + entry.getNurse() + ";" + entry.getDivision() + ";" + entry.getDate() + ";" + entry.getInfo() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
