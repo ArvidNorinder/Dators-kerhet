@@ -4,12 +4,14 @@ import java.io.*;
 import java.math.BigInteger;
 
 import javax.net.ssl.*;
+import javax.swing.text.html.parser.Entity;
 import javax.xml.namespace.QName;
 
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -116,7 +118,7 @@ public class client {
           break;
         } 
         
-        printEntriesSpecifyRecord(msg, in, out);
+        printEntriesSpecifyRecord(msg, in, out, read);
         
 
         System.out.print("sending '" + msg + "' to server...");
@@ -134,21 +136,37 @@ public class client {
     }
   }
 
-  private static void printEntriesSpecifyRecord(String msg, BufferedReader in, PrintWriter out) {
+  private static void printEntriesSpecifyRecord(String msg, BufferedReader in, PrintWriter out, BufferedReader read) {
     //Tell server that we want division entries for divison msg
     out.println(msg);
     out.flush();
-    //TODO: List entries. Ask server for entries, as an array/list/etc
+    //server will respond with filling the buffered reader.
+    List<String> entries = new ArrayList<>();
+    String line;
+
+    //Here the server only replies with entries that our role has access to.
+    while ((line = in.readLine()) != null) {
+        entries.add(line);
+    }
     
-    //save length of structure
+    for (int i = 0; i < entries.size(); i++) {
+      System.out.println(entries.get(i));
+    }
+
+    String index;
+    String answer;
+
+    System.out.println("Select an entry out of the printed, numbered in asceding order going down. " + entries.size() + " entries were printed.");
     //Let user specify one entry in range of structure length
+    index = read.readLine();
     //Ask if display or edit
     System.out.println("Read, edit or delete entry? (r/e/d)");
-    String answer = read.readLine();
+    answer = read.readLine();
     if(answer.equalsIgnoreCase("r")) {
-      printEntries(msg);
+      out.println("r," +  entries.get(Integer.parseInt(index)));
+      out.flush();
+      System.out.println(in.readLine());
     } else if (answer.equalsIgnoreCase("e")) {
-      edit
     } else if (answer.equalsIgnoreCase("d")) {
 
     }
