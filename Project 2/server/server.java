@@ -86,12 +86,17 @@ public class server implements Runnable {
 
       //TODO: Handle client requests below
       while ((clientMsg = in.readLine()) != null) {
-        String rev = new StringBuilder(clientMsg).reverse().toString();
-        System.out.println("received '" + clientMsg + "' from client");
-        System.out.print("sending '" + rev + "' to client...");
-        out.println(rev);
-        out.flush();
-        System.out.println("done\n");
+        //first thing we get from the client is either a patient name or 
+        //a division name
+        /*
+          String rev = new StringBuilder(clientMsg).reverse().toString();
+          System.out.println("received '" + clientMsg + "' from client");
+          System.out.print("sending '" + rev + "' to client...");
+          out.println(rev);
+          out.flush();
+          System.out.println("done\n"); 
+         */
+        // 
       }
       in.close();
       out.close();
