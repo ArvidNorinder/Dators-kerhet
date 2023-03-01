@@ -163,9 +163,10 @@ public class client {
     System.out.println("Read, edit or delete entry? (r/e/d)");
     answer = read.readLine();
     if(answer.equalsIgnoreCase("r")) {
-
+      out.println("r," +  entries.get(Integer.parseInt(index)));
+      out.flush();
+      System.out.println(in.readLine());
     } else if (answer.equalsIgnoreCase("e")) {
-      edit
     } else if (answer.equalsIgnoreCase("d")) {
 
     }
