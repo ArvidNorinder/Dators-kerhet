@@ -44,6 +44,10 @@ public class server implements Runnable {
     }
   }
 
+  private void getAllowedRecords () {
+
+  }
+
   public void run() {
     try {
       SSLSocket socket=(SSLSocket)serverSocket.accept();
@@ -92,6 +96,7 @@ public class server implements Runnable {
   }
   
   private void newListener() { (new Thread(this)).start(); } // calls run()
+
   public static void main(String args[]) {
     System.out.println("\nServer Started\n");
     int port = -1;
