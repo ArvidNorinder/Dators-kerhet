@@ -4,10 +4,13 @@ import java.io.*;
 import java.math.BigInteger;
 
 import javax.net.ssl.*;
+import javax.xml.namespace.QName;
+
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
 import java.util.Scanner;
+import java.util.List;
 
 /*
  * This example shows how to set up a key manager to perform client
@@ -111,23 +114,11 @@ public class client {
         msg = read.readLine();
         if (msg.equalsIgnoreCase("quit")) {
           break;
-        } else if (equalsDivision(msg)) {
-          if(accessIsCorrect(subject)) {
-              //TODO: Ask if display or edit
-              System.out.println("Read or list entries? (r/l)");
-              String answer = read.readLine();
-              if(answer.equals("r")) {
-                printEntries(msg);
-              } else if (answer)
+        } 
+        
+        printEntriesSpecifyRecord(msg, in, out);
+        
 
-              
-          }
-        } else if (equalsPatient(msg)) {
-          if(accessIsCorrect(subject)) {
-            //TODO: Ask if display or edit
-            printEntries(msg);
-          }
-        }
         System.out.print("sending '" + msg + "' to server...");
         out.println(msg);
         out.flush();
@@ -143,11 +134,38 @@ public class client {
     }
   }
 
-  public boolean equalsDivision(String msg) {
+  private static void printEntriesSpecifyRecord(String msg, BufferedReader in, PrintWriter out) {
+    //Tell server that we want division entries for divison msg
+    out.println(msg);
+    out.flush();
+    //TODO: List entries. Ask server for entries, as an array/list/etc
+    
+    //save length of structure
+    //Let user specify one entry in range of structure length
+    //Ask if display or edit
+    System.out.println("Read, edit or delete entry? (r/e/d)");
+    String answer = read.readLine();
+    if(answer.equalsIgnoreCase("r")) {
+      printEntries(msg);
+    } else if (answer.equalsIgnoreCase("e")) {
+      edit
+    } else if (answer.equalsIgnoreCase("d")) {
+
+    }
+  }
+
+  private static List<String> getEntriesForDivision(String msg) {
+    return null;
+  }
+
+  private static void printEntries(String msg) {
+  }
+
+  public static boolean equalsDivision(String msg) {
 
   }
 
-  public boolean equalsPatient(String msg) {
-
+  public static boolean equalsPatient(String msg) {
+    
   }
 }
