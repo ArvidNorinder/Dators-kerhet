@@ -44,19 +44,35 @@ public class PermissionHandler {
     public boolean canRead (User user, JournalEntry entry) {
         if (user.isGovernment()) {
             return true;
-        } 
+        } else if (user.isPatient()) {
+            return user.getID() == entry.getPatientID();
+        } else {
+            return user.getDivision() == entry.getDivision();
+        }
+
+
     }
 
-    public boolean canEdit (User user, User user2) {
+    public boolean canEdit (User user, JournalEntry entry) {
+       if (user.isDoctor() || user.isNurse()) {
+              return user.getDivision() == entry.getDivision();
+         } else {
+              return false;
+       }
+    }
+
+    public boolean canCreate (User user1, User user2) {
+        if (user1.isDoctor() && user1.hasPatient(user2.getID())) {
+            return true;
+        }
+
         return false;
     }
 
-    public boolean canCreate (User user, User user2) {
-        return false;
-    }
-
-    public boolean canDelete (User user, User user2) {
-        if (user1)
+    public boolean canDelete (User user, JournalEntry entry) {
+        if (user.isGovernment()) {
+            return true;
+        }
         return false;
     }
 }
