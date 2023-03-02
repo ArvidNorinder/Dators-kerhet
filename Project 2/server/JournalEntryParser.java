@@ -1,5 +1,6 @@
 package server;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,6 +17,45 @@ public class JournalEntryParser {
 
     public JournalEntryParser(String file) throws FileNotFoundException {
         fileName = new File(file);
+    }
+
+    public boolean deleteJournalEntry(JournalEntry deleteEntry, List<JournalEntry> journalEntries) {
+        try {
+            boolean returnValue = false;
+            int currentIndex = 0;
+            int deleteLineIndex = 0;
+            Scanner scanFile = new Scanner(fileName);
+            String line;
+            List<String> lines = new ArrayList<>();
+
+            while(scanFile.hasNextLine()) {
+                line = scanFile.nextLine();
+                lines.add(line);
+                String[] splitLine = line.split(";");
+                if (splitLine[0].equals(deleteEntry.getPatientID()) && 
+                    splitLine[1].equals(deleteEntry.getDoctor()) && 
+                    splitLine[2].equals(deleteEntry.getNurse()) &&
+                    splitLine[3].equals(deleteEntry.getDivision()) &&
+                    splitLine[4].equals(deleteEntry.getDate())) {
+                        deleteLineIndex = currentIndex;
+                        journalEntries.remove(deleteLineIndex);
+                        returnValue = true;
+                }
+                currentIndex++;
+            }
+            scanFile.close();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("journalEntries.txt"));
+
+            for (int i = 0; i <= currentIndex; i++) {
+                if(i != deleteLineIndex)
+                    writer.write(lines.get(i) + System.getProperty("line.separator"));
+            }
+            return returnValue;
+        } catch (Exception e) {
+            // TODO: handle exception
+            return false;
+        }
     }
 
     public static void main(String[] args) {
