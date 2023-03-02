@@ -85,7 +85,6 @@ public class server implements Runnable {
 
       String clientMsg = null;
 
-      clientMsg = in.readLine();
       System.out.println("test " + serialNumberString);
       User us = certificateToUserMap.get(serialNumberString);
     //TODO: Handle client requests below
@@ -104,6 +103,10 @@ public class server implements Runnable {
       //Create file object to read from journal entries
       readJournals();
       readEmployees();
+      
+
+      do { //TODO: Remember to close on other end after done.
+      clientMsg = in.readLine();
       List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(clientMsg));
       System.out.println("hello");
       System.out.println(entriesToReturn.size());
@@ -115,9 +118,8 @@ public class server implements Runnable {
       out.println("end");
       out.flush();
 
-      do { //TODO: Remember to close on other end after done.
         clientMsg = in.readLine();
-        System.out.println(clientMsg);
+        System.out.println("Message recieved form client: " + clientMsg);
         String[] msgParts = clientMsg.split(",");
 
         if(msgParts[0].equals("r")) {

@@ -118,3 +118,27 @@ nurse Niklas in division1 treated
 2023-03-01 18:22:08; 
 nurse Niklas in division1 treated 
 >>>>>>> 633b6d5552eed1f4e56f197770b25d902dd6f94b
+2023-03-02 11:44:59; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:44:59; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:45:31; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:45:31; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:47:18; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:47:18; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:49:45; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:49:45; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:53:36; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:53:36; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:53:44; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 11:53:44; 
+doctor Sofia in division1 Accessed record 

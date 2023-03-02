@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 Arvid;patient;division1
-=======
-
->>>>>>> 633b6d5552eed1f4e56f197770b25d902dd6f94b
+Hanna;patient;division1

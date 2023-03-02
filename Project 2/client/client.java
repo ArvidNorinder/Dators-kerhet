@@ -111,7 +111,7 @@ public class client {
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String msg;
       for (;;) {
-        System.out.println("Enter a division or patient name to list entries.");
+        System.out.println("Enter a patient name to list entries.");
         System.out.print(">");
         msg = read.readLine();
         if (msg.equalsIgnoreCase("quit")) {

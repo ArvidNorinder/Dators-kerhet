@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 Hanna;Sofia;Niklas;division1;2023:02:23;text
-Hanna;Sofia;Niklas;division1;2023:02:23;some entry info some text
+Hanna;Sofia;Niklas;division1;2023:01:23;some entry info some text
 Arvid;Sofia;Niklas;division1;2023:02:23;need info
 Arvid;Sofia;Niklas;division1;2023:01:23;need info and some more
-=======
-Arvid;Sofia;Niklas;division1;2023:02:23;This is a test entry
-Arvid;Sofia;Niklas;division1;2023:02:23;Arvid �r en bra patient
->>>>>>> 633b6d5552eed1f4e56f197770b25d902dd6f94b
