@@ -21,8 +21,6 @@ public class server implements Runnable {
 
   private Map<String, User> certificateToUserMap = new HashMap<>();
 
-  //TODO: A function that returns a list of all the patients that a user is allowed to see
-  //TODO: A function that returns a list of all the patients that a user is allowed to edit
   //TODO: A function that handles messages from the client (i.e. what to do when a client sends a message to the server)
   //TODO: main function that starts the server
 
@@ -154,9 +152,9 @@ public class server implements Runnable {
                 parser.deleteJournalEntryFromFile(e);
                 parser.write(updatedJournal);
                 updateFromDataBase();
-                System.out.println("successfully edited journal entry"); 
+                out.println("successfully edited journal entry"); 
               } else {
-                System.out.println("you do not have permission to edit this journal entry");
+                out.println("you do not have permission to edit this journal entry");
               }
             }
           }
@@ -167,9 +165,9 @@ public class server implements Runnable {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
-                System.out.println("successfully deleted journal entry");
+                out.println("successfully deleted journal entry");
               } else {
-                System.out.println("you do not have permission to delete this journal entry");
+                out.println("you do not have permission to delete this journal entry");
               }
             }
           }
@@ -181,9 +179,9 @@ public class server implements Runnable {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
                 updateFromDataBase();
-                System.out.println("successfully created journal entry");
+                out.println("successfully created journal entry");
               } else {
-                System.out.println("you do not have permission to create a journal entry for this patient");
+                out.println("you do not have permission to create a journal entry for this patient");
               }
             }
           }

@@ -24,10 +24,7 @@ public class User {
     }
 
     public boolean isPatient() {
-        if (patients == null)
-            return true;
-        else
-            return false;
+        return role.equals("patient");
     }
 
     public boolean isDoctor() {
