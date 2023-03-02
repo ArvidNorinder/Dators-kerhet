@@ -1,4 +1,5 @@
 2023-02-23 12:02:11; 
+<<<<<<< HEAD
 nurse Niklas in division1treated Tobias2023-03-01 18:30:40; 
 doctor Sofia in division1 Accessed record 
 2023-03-01 18:30:40; 
@@ -107,3 +108,13 @@ doctor Sofia in division1 Accessed record
 doctor Sofia in division1 Accessed record 
 2023-03-02 11:35:05; 
 doctor Sofia in division1 Accessed record 
+=======
+nurse Niklas in division1treated Tobias2023-03-01 18:21:57; 
+nurse Niklas in division1 treated 
+2023-03-01 18:22:06; 
+nurse Niklas in division1 treated 
+2023-03-01 18:22:07; 
+nurse Niklas in division1 treated 
+2023-03-01 18:22:08; 
+nurse Niklas in division1 treated 
+>>>>>>> 633b6d5552eed1f4e56f197770b25d902dd6f94b
