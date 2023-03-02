@@ -22,11 +22,12 @@ public class JournalEntryParser {
     public boolean deleteJournalEntryFromFile(JournalEntry deleteEntry) {
         try {
             boolean returnValue = false;
-            int currentIndex = 0;
-            int deleteLineIndex = 0;
+            int currentIndex = 1;
+            int deleteLineIndex = 1;
             Scanner scanFile = new Scanner(fileName);
             String line;
             List<String> lines = new ArrayList<>();
+            System.out.println("Gets here??");
 
             while(scanFile.hasNextLine()) {
                 line = scanFile.nextLine();
@@ -38,18 +39,27 @@ public class JournalEntryParser {
                     splitLine[3].equals(deleteEntry.getDivision()) &&
                     splitLine[4].equals(deleteEntry.getDate())) {
                         deleteLineIndex = currentIndex;
+                        System.out.println("Delete line index: " + deleteLineIndex);
                         returnValue = true;
                 }
                 currentIndex++;
             }
             scanFile.close();
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("journalEntries.txt"));
+            //Skriver inte till rätt fil här
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./database/journalEntries.txt"));
 
-            for (int i = 0; i <= currentIndex; i++) {
-                if(i != deleteLineIndex)
-                    writer.write(lines.get(i) + System.getProperty("line.separator"));
+            for (int i = 1; i < currentIndex; i++) {
+                System.out.println("Current index to write to file: " + i);
+                if(i != deleteLineIndex) {
+                    writer.write(lines.get(i - 1) + System.getProperty("line.separator"));
+                    System.out.println(lines.get(i -1) + " was printed to file");
+                }
+                else 
+                    System.out.println(lines.get(i- 1) + " was not printed to file at index " + i);
             }
+            writer.flush();
+            writer.close();
             return returnValue;
         } catch (Exception e) {
             // TODO: handle exception

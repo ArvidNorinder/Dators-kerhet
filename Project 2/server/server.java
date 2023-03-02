@@ -101,6 +101,7 @@ public class server implements Runnable {
 
       System.out.println("test " + serialNumberString);
       User us = certificateToUserMap.get(serialNumberString);
+      System.out.println(us.getRole());
     //TODO: Handle client requests below
       //first thing we get from the client is either a patient name or 
       //a division name
@@ -150,6 +151,7 @@ public class server implements Runnable {
                 String oldInfo = e.getInfo();
                 JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
+                parser.deleteJournalEntryFromFile(e);
                 parser.write(updatedJournal);
                 updateFromDataBase();
                 System.out.println("successfully edited journal entry"); 
