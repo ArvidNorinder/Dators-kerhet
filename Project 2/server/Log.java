@@ -21,6 +21,14 @@ public class Log {
         this.file = new File(file);
     }
 
+    public String getCurrentDate () {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+        LocalDateTime timeNow = LocalDateTime.now();
+        String formatDateTime = timeNow.format(formatter);
+        String[] date = formatDateTime.split(" ");
+        return date[0];
+    }
+
     public void log(String logString, User user) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime timeNow = LocalDateTime.now();
