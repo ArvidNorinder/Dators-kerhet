@@ -14,6 +14,12 @@ public class PermissionHandler {
         String currentPatient = entries.get(0).getPatientID();
         System.out.println("entries size: " + entries.size());
 
+        System.out.println(user.isGovernment());
+        if (user.isGovernment()) {
+            logger.log("Accessed records", user);
+            return entries;
+        }
+
         if (user.isPatient()) {
             if (currentPatient.equals(user.getID())) {
                 logger.log("Accessed their records", user);
@@ -23,11 +29,7 @@ public class PermissionHandler {
                 return new ArrayList<JournalEntry>();
             }
         }
-
-        if (user.isGovernment()) {
-            logger.log("Accessed records", user);
-            return entries;
-        }
+        
 
         List<JournalEntry> allowedEntries = new ArrayList<JournalEntry>();
 

@@ -32,3 +32,25 @@ doctor Sofia in division1 Accessed record
 doctor Sofia in division1 Accessed record 
 2023-03-02 11:53:44; 
 doctor Sofia in division1 Accessed record 
+2023-03-02 13:33:30; 
+government Government in null Tried to access another patient's records but was denied 
+2023-03-02 13:36:55; 
+government Government in null Tried to access another patient's records but was denied 
+2023-03-02 13:39:47; 
+government Government in null Tried to access another patient's records but was denied 
+2023-03-02 13:40:19; 
+government Government in null Accessed records 
+2023-03-02 13:41:04; 
+government Government in null Deleted record 
+2023-03-02 13:41:22; 
+government Government in null Accessed records 
+2023-03-02 13:41:49; 
+government Government in null Accessed records 
+2023-03-02 13:42:18; 
+government Government in null Tried to create another patient's records but was denied 
+2023-03-02 13:43:40; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 13:43:40; 
+doctor Sofia in division1 Accessed record 
+2023-03-02 13:44:39; 
+doctor Sofia in division1 Tried to create another patient's records but was denied 

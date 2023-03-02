@@ -149,11 +149,10 @@ public class server implements Runnable {
                 JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(updatedJournal);
-                parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
-                System.out.println("successfully edited journal entry"); 
+                out.println("successfully edited journal entry"); 
               } else {
-                System.out.println("you do not have permission to edit this journal entry");
+                out.println("you do not have permission to edit this journal entry");
               }
             }
           }
@@ -164,9 +163,9 @@ public class server implements Runnable {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
-                System.out.println("successfully deleted journal entry");
+                out.println("successfully deleted journal entry");
               } else {
-                System.out.println("you do not have permission to delete this journal entry");
+                out.println("you do not have permission to delete this journal entry");
               }
             }
           }
@@ -178,9 +177,9 @@ public class server implements Runnable {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
                 updateFromDataBase();
-                System.out.println("successfully created journal entry");
+                out.println("successfully created journal entry");
               } else {
-                System.out.println("you do not have permission to create a journal entry for this patient");
+                out.println("you do not have permission to create a journal entry for this patient");
               }
             }
           }
