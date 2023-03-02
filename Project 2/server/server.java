@@ -41,7 +41,7 @@ public class server implements Runnable {
   }
   
   public void readEmployees() {
-    UserParser parser = new UserParser("database/employees.txt");
+    UserParser parser = new UserParser("database/users.txt");
     users = parser.read();
   }
 
@@ -101,6 +101,8 @@ public class server implements Runnable {
       // 
 
       //Create file object to read from journal entries
+      readJournals();
+      readEmployees();
       List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(us.getID()));
 
       for(JournalEntry e: entriesToReturn) {
@@ -144,9 +146,10 @@ public class server implements Runnable {
 
   public static void main(String args[]) {
     System.out.println("\nServer Started\n");
-    int port = -1;
+    int port = 9876;
     if (args.length >= 1) {
-      port = Integer.parseInt(args[0]);
+      //port = Integer.parseInt(args[0]);
+      port = 9876;
     }
     String type = "TLSv1.2";
     try {

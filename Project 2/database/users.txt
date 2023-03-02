@@ -1,12 +1,1 @@
-1;doctor;division1;
-2;nurse;division1;
-3;patient;null
-4;patient;null
-1;doctor;division1;
-2;nurse;division1;
-3;patient;null
-4;patient;null
-1;doctor;division1;
-2;nurse;division1;
-3;patient;null
-4;patient;null
+

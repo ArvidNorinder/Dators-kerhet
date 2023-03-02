@@ -33,17 +33,17 @@ public class client {
     String userName = scan.nextLine();
     
     String host = null;
-    int port = -1;
-    for (int i = 0; i < args.length; i++) {
+    int port = 9876;
+    /*for (int i = 0; i < args.length; i++) {
       System.out.println("args[" + i + "] = " + args[i]);
     }
     if (args.length < 2) {
       System.out.println("USAGE: java client host port");
       System.exit(-1);
-    }
+    }*/
     try { /* get input parameters */
-      host = args[0];
-      port = Integer.parseInt(args[1]);
+      host = "localhost";
+      port = 9876;
     } catch (IllegalArgumentException e) {
       System.out.println("USAGE: java client host port");
       System.exit(-1);
