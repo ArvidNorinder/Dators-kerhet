@@ -41,7 +41,7 @@ public class server implements Runnable {
   }
   
   public void readEmployees() {
-    UserParser parser = new UserParser("database/employees.txt");
+    UserParser parser = new UserParser("database/users.txt");
     users = parser.read();
   }
 
@@ -86,6 +86,7 @@ public class server implements Runnable {
       String clientMsg = null;
 
       clientMsg = in.readLine();
+      System.out.println("test " + serialNumberString);
       User us = certificateToUserMap.get(serialNumberString);
     //TODO: Handle client requests below
       //first thing we get from the client is either a patient name or 
@@ -103,20 +104,27 @@ public class server implements Runnable {
       //Create file object to read from journal entries
       readJournals();
       readEmployees();
-      List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(us.getID()));
+      List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(clientMsg));
+      System.out.println("hello");
+      System.out.println(entriesToReturn.size());
+
 
       for(JournalEntry e: entriesToReturn) {
-        out.println(e.toString());
-        out.flush();
+        out.println(e.toString()); 
       }
+      out.println("end");
+      out.flush();
 
-      while ((clientMsg = in.readLine()) != null) {
+      do { //TODO: Remember to close on other end after done.
+        clientMsg = in.readLine();
+        System.out.println(clientMsg);
         String[] msgParts = clientMsg.split(",");
 
         if(msgParts[0].equals("r")) {
           for (JournalEntry e : entriesToReturn) {
             if (e.toString().equals(msgParts[1])) {
-              e.getInfo();
+              out.println(e.getInfo());
+              //TODO: Add end?
             }
           }
         } else if(msgParts[0].equals("e")) {
@@ -126,7 +134,7 @@ public class server implements Runnable {
         } else if(msgParts[0].equals("c")) {
 
         }
-      }
+      } while(clientMsg != null);
 
 
       in.close();

@@ -120,12 +120,7 @@ public class client {
         
         printEntriesSpecifyRecord(msg, in, out, read);
         
-
-        System.out.print("sending '" + msg + "' to server...");
-        out.println(msg);
-        out.flush();
         System.out.println("done");
-        System.out.println("received '" + in.readLine() + "' from server\n");
       }
       in.close();
       out.close();
@@ -141,14 +136,22 @@ public class client {
       //Tell server what we want
       out.println(msg);
       out.flush();
+
+      System.out.println("Message we want to send: " + msg);
       //server will respond with filling the buffered reader.
       List<String> entries = new ArrayList<>();
       String line;
-
       //Here the server only replies with entries that our role has access to.
-      while ((line = in.readLine()) != null) {
-          entries.add(line);
-      }
+      
+      do {
+          line = in.readLine();
+          System.out.println("line read: " + line);
+          if (line.equals("end"))
+            break;
+          else if(line != null)
+            entries.add(line);
+          
+      } while(line != null);
       
       for (int i = 0; i < entries.size(); i++) {
         //TODO make sure server does not send text in each line
@@ -166,16 +169,17 @@ public class client {
       //TODO: Let doctors create new entry
       answer = read.readLine();
       if(answer.equalsIgnoreCase("r")) {
-        out.println("r," +  entries.get(Integer.parseInt(index)) + ",");
+        System.out.println("Testtttttt");
+        out.println("r," +  entries.get(Integer.parseInt(index) - 1) + ",");
         out.flush();
         System.out.println(in.readLine());
       } else if (answer.equalsIgnoreCase("e")) {
         System.out.println("Enter additional content: ");
         answer = read.readLine();
-        out.println("e," + entries.get(Integer.parseInt(index)) + "," + answer);
+        out.println("e," + entries.get(Integer.parseInt(index) - 1) + "," + answer);
         out.flush();
       } else if (answer.equalsIgnoreCase("d")) {
-        out.println("d," +  entries.get(Integer.parseInt(index)) + ",");
+        out.println("d," +  entries.get(Integer.parseInt(index) - 1) + ",");
         out.flush();
       } else if (answer.equalsIgnoreCase("c")) {
         System.out.println("Enter patient name: ");

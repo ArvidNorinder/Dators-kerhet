@@ -1,0 +1,9 @@
+Client side
+En truststore för alla användare som heter clientttrustore  
+En keystroe som alla användare delar på 
+
+Server side
+En trusstore som innehåller alla certifikat som servern ska acceptera
+En keystore som innehåller certifikatet för servern
+
+

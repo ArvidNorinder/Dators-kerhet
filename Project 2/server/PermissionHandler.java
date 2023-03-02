@@ -12,9 +12,10 @@ public class PermissionHandler {
 
     public List<JournalEntry> readPatientJournal (User user, List<JournalEntry> entries) {
         String currentPatient = entries.get(0).getPatientID();
+        System.out.println("entries size: " + entries.size());
 
         if (user.isPatient()) {
-            if (currentPatient == user.getID()) {
+            if (currentPatient.equals(user.getID())) {
                 logger.log("Accessed their records", user);
                 return entries;
             } else {
@@ -31,7 +32,7 @@ public class PermissionHandler {
         List<JournalEntry> allowedEntries = new ArrayList<JournalEntry>();
 
         for (JournalEntry entry: entries) {
-            if (user.getDivision() == entry.getDivision()) {
+            if (user.getDivision().equals(entry.getDivision())) {
                 logger.log("Accessed record", user);
                 allowedEntries.add(entry);
             }
@@ -45,9 +46,9 @@ public class PermissionHandler {
         if (user.isGovernment()) {
             return true;
         } else if (user.isPatient()) {
-            return user.getID() == entry.getPatientID();
+            return user.getID().equals(entry.getPatientID());
         } else {
-            return user.getDivision() == entry.getDivision();
+            return user.getDivision().equals(entry.getDivision());
         }
 
 
@@ -55,7 +56,7 @@ public class PermissionHandler {
 
     public boolean canEdit (User user, JournalEntry entry) {
        if (user.isDoctor() || user.isNurse()) {
-              return user.getDivision() == entry.getDivision();
+              return user.getDivision().equals(entry.getDivision());
          } else {
               return false;
        }
