@@ -21,8 +21,6 @@ public class server implements Runnable {
 
   private Map<String, User> certificateToUserMap = new HashMap<>();
 
-  //TODO: A function that returns a list of all the patients that a user is allowed to see
-  //TODO: A function that returns a list of all the patients that a user is allowed to edit
   //TODO: A function that handles messages from the client (i.e. what to do when a client sends a message to the server)
   //TODO: main function that starts the server
 
@@ -151,6 +149,7 @@ public class server implements Runnable {
                 JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(updatedJournal);
+                parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
                 System.out.println("successfully edited journal entry"); 
               } else {

@@ -1,115 +1,6 @@
 2023-02-23 12:02:11; 
-<<<<<<< HEAD
-nurse Niklas in division1treated Tobias2023-03-01 18:30:40; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:30:40; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:34:52; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:34:52; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:37:53; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:37:53; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:38:17; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:38:17; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:39:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:39:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:42:40; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:42:40; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:45:56; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:45:56; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:46:48; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:46:48; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:47:45; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:47:45; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:59:20; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 18:59:20; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:01:58; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:01:58; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:06:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:06:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:09:23; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:09:23; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:12:16; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:12:16; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:16:03; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:16:03; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:17:01; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:17:01; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:20:51; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:20:51; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:22:18; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:22:18; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:23:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:23:08; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:25:05; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:25:05; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:27:56; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:27:56; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:28:52; 
-doctor Sofia in division1 Accessed record 
-2023-03-01 19:28:52; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:28:31; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:28:31; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:29:28; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:29:28; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:30:26; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:30:26; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:33:27; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:33:27; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:35:05; 
-doctor Sofia in division1 Accessed record 
-2023-03-02 11:35:05; 
-doctor Sofia in division1 Accessed record 
-=======
-nurse Niklas in division1treated Tobias2023-03-01 18:21:57; 
+nurse Niklas in division1 treated 
+Tobias2023-03-01 18:21:57; 
 nurse Niklas in division1 treated 
 2023-03-01 18:22:06; 
 nurse Niklas in division1 treated 
@@ -117,7 +8,6 @@ nurse Niklas in division1 treated
 nurse Niklas in division1 treated 
 2023-03-01 18:22:08; 
 nurse Niklas in division1 treated 
->>>>>>> 633b6d5552eed1f4e56f197770b25d902dd6f94b
 2023-03-02 11:44:59; 
 doctor Sofia in division1 Accessed record 
 2023-03-02 11:44:59; 
