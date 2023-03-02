@@ -55,8 +55,7 @@ public class JournalEntryParser {
         }
         return patientEntries;
     }
-
-    
+  
 
     public void write(JournalEntry entry) { //Writes a JournalEntry to the file
         try {

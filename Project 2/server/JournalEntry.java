@@ -41,6 +41,8 @@ public class JournalEntry {
         return info;
     }
 
+    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(patientID + ";");

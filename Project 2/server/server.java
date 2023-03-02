@@ -7,6 +7,8 @@ import javax.net.ssl.*;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map;
 
@@ -52,6 +54,14 @@ public class server implements Runnable {
         System.out.println(entry.toString());
       }
     }
+  }
+
+  public String getCurrentDate () {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+    LocalDateTime timeNow = LocalDateTime.now();
+    String formatDateTime = timeNow.format(formatter);
+    String[] date = formatDateTime.split(" ");
+    return date[0];
   }
 
   
@@ -130,11 +140,44 @@ public class server implements Runnable {
             }
           }
         } else if(msgParts[0].equals("e")) {
-
-        } else if(msgParts[0].equals("d")) {
-
+          for (JournalEntry e : entriesToReturn) {
+            if (e.toString().equals(msgParts[1])) {
+              if (permissionHandler.canEdit(us, e)) {
+                String oldInfo = e.getInfo();
+                JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
+                JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
+                parser.write(updatedJournal);
+                System.out.println("successfully edited journal entry"); 
+              } else {
+                System.out.println("you do not have permission to edit this journal entry");
+              }
+            }
+          }
+        }else if(msgParts[0].equals("d")) {
+          for (JournalEntry e: entriesToReturn) {
+            if (e.toString().equals(msgParts[1])) {
+              if (permissionHandler.canDelete(us, e)) {
+                JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
+                parser.deleteJournalEntry(e);
+                System.out.println("successfully deleted journal entry");
+              } else {
+                System.out.println("you do not have permission to delete this journal entry");
+              }
+            }
+          }
         } else if(msgParts[0].equals("c")) {
-
+          String[] tempName = msgParts[1].split(";");
+          for (User u : users) {
+            if (u.getID().equals(tempName[0])) {
+              if (permissionHandler.canCreate(us, u)) {
+                JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
+                parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
+                System.out.println("successfully created journal entry");
+              } else {
+                System.out.println("you do not have permission to create a journal entry for this patient");
+              }
+            }
+          }
         }
       } while(clientMsg != null);
 

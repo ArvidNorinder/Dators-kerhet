@@ -57,8 +57,8 @@ public class PermissionHandler {
     public boolean canEdit (User user, JournalEntry entry) {
        if (user.isDoctor() || user.isNurse()) {
               return user.getDivision().equals(entry.getDivision());
-         } else {
-              return false;
+        } else {
+            return false;
        }
     }
 
