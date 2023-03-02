@@ -16,7 +16,6 @@ public class server implements Runnable {
   private ServerSocket serverSocket = null;
   private static int numConnectedClients = 0;
   private List<User> users;
-  private Map<String , List<JournalEntry>> patients;
   private Map<String, List<JournalEntry>> journalEntries;
   private PermissionHandler permissionHandler = new PermissionHandler(new Log("database/log.txt"));
 
@@ -45,6 +44,11 @@ public class server implements Runnable {
   public void readEmployees() {
     UserParser parser = new UserParser("database/users.txt");
     users = parser.read();
+  }
+
+  public void updateFromDataBase() throws FileNotFoundException  {
+    readJournals();
+    readEmployees();
   }
 
   private void getRecordsForPatient (String patient) {
@@ -147,6 +151,7 @@ public class server implements Runnable {
                 JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(updatedJournal);
+                updateFromDataBase();
                 System.out.println("successfully edited journal entry"); 
               } else {
                 System.out.println("you do not have permission to edit this journal entry");
@@ -159,6 +164,7 @@ public class server implements Runnable {
               if (permissionHandler.canDelete(us, e)) {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.deleteJournalEntryFromFile(e);
+                updateFromDataBase();
                 System.out.println("successfully deleted journal entry");
               } else {
                 System.out.println("you do not have permission to delete this journal entry");
@@ -172,6 +178,7 @@ public class server implements Runnable {
               if (permissionHandler.canCreate(us, u)) {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
+                updateFromDataBase();
                 System.out.println("successfully created journal entry");
               } else {
                 System.out.println("you do not have permission to create a journal entry for this patient");
