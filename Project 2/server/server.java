@@ -158,7 +158,7 @@ public class server implements Runnable {
             if (e.toString().equals(msgParts[1])) {
               if (permissionHandler.canDelete(us, e)) {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
-                parser.deleteJournalEntry(e);
+                parser.deleteJournalEntryFromFile(e);
                 System.out.println("successfully deleted journal entry");
               } else {
                 System.out.println("you do not have permission to delete this journal entry");

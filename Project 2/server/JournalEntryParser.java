@@ -19,7 +19,7 @@ public class JournalEntryParser {
         fileName = new File(file);
     }
 
-    public boolean deleteJournalEntry(JournalEntry deleteEntry, List<JournalEntry> journalEntries) {
+    public boolean deleteJournalEntryFromFile(JournalEntry deleteEntry) {
         try {
             boolean returnValue = false;
             int currentIndex = 0;
@@ -38,7 +38,6 @@ public class JournalEntryParser {
                     splitLine[3].equals(deleteEntry.getDivision()) &&
                     splitLine[4].equals(deleteEntry.getDate())) {
                         deleteLineIndex = currentIndex;
-                        journalEntries.remove(deleteLineIndex);
                         returnValue = true;
                 }
                 currentIndex++;
