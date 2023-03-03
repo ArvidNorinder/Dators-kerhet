@@ -1,3 +1,5 @@
-Arvid;patient;division1
-Hanna;patient;division1
+Arvid;patient
+Hanna;patient
 Government;government
+Sofia;doctor;division1;Arvid
+Niklas;doctor;division1;Hanna,Arvid

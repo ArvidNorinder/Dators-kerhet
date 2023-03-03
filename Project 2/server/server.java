@@ -121,7 +121,6 @@ public class server implements Runnable {
       do { //TODO: Remember to close on other end after done.
       clientMsg = in.readLine();
       List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(clientMsg));
-      System.out.println("hello");
       System.out.println(entriesToReturn.size());
 
 
@@ -152,9 +151,9 @@ public class server implements Runnable {
                 parser.deleteJournalEntryFromFile(e);
                 parser.write(updatedJournal);
                 updateFromDataBase();
-                out.println("successfully edited journal entry"); 
+                System.out.println("successfully edited journal entry"); 
               } else {
-                out.println("you do not have permission to edit this journal entry");
+                System.out.println("you do not have permission to edit this journal entry");
               }
             }
           }
@@ -165,23 +164,26 @@ public class server implements Runnable {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
-                out.println("successfully deleted journal entry");
+                System.out.println("successfully deleted journal entry");
               } else {
-                out.println("you do not have permission to delete this journal entry");
+                System.out.println("you do not have permission to delete this journal entry");
               }
             }
           }
         } else if(msgParts[0].equals("c")) {
           String[] tempName = msgParts[1].split(";");
+          for (String str : tempName) {
+            System.out.println(str);
+          }
           for (User u : users) {
             if (u.getID().equals(tempName[0])) {
               if (permissionHandler.canCreate(us, u)) {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
                 updateFromDataBase();
-                out.println("successfully created journal entry");
+                System.out.println("successfully created journal entry");
               } else {
-                out.println("you do not have permission to create a journal entry for this patient");
+                System.out.println("you do not have permission to create a journal entry for this patient");
               }
             }
           }

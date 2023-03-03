@@ -1,3 +1,4 @@
 Hanna;Sofia;Niklas;division1;2023:02:23;text
 Hanna;Sofia;Niklas;division1;2023:01:23;some entry info some text
-Arvid;Sofia;Niklas;division1;2023:02:23;need info
+Arvid;Sofia;Niklas;division1;2023:02:23;need infoediting
+Arvid;Sofia;Niklas;division1;2023:02:23;Arvid �r en bra patient

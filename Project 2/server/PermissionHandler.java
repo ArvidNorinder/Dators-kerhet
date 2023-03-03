@@ -12,7 +12,6 @@ public class PermissionHandler {
 
     public List<JournalEntry> readPatientJournal (User user, List<JournalEntry> entries) {
         String currentPatient = entries.get(0).getPatientID();
-        System.out.println("entries size: " + entries.size());
 
         System.out.println(user.isGovernment());
         if (user.isGovernment()) {

@@ -194,11 +194,8 @@ public class client {
         System.out.println("Enter division (divisionX): ");
         String division = read.readLine();
 
-        System.out.println("Enter date (yyyy-mm-dd): ");
-        String information = read.readLine();
-
         System.out.println("Enter information: ");
-        information = read.readLine();
+        String information = read.readLine();
 
         out.println("c," + patientName + ";" + doctorName + ";" + nurseName + ";" + division + ";" + information + ",");
         out.flush();

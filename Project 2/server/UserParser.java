@@ -35,14 +35,17 @@ public class UserParser {
             Scanner myReader = new Scanner(fileName);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                String[] user = data.split(";");
-                if (user.length == 4) {
-                    users.add(new User(user[0], user[1], user[2]));
-                    for (String patient: user[3].split(",")) {
-                        users.get(users.size()-1).addPatient(patient);
-                    }
+                String[] splitData = data.split(";");
+                if (splitData.length == 4) {
+                    String[] patients = splitData[3].split(",");
+                    User user = new User(splitData[0], splitData[1], splitData[2]);
+                    for (String patient: patients) {
+                        user.addPatient(patient);
+                    } 
+                    users.add(user);
                 } else {
-                    users.add(new User(user[0], user[1]));
+                    User user = new User(splitData[0], splitData[1]);
+                    users.add(user);
                 }
             }
             myReader.close();
