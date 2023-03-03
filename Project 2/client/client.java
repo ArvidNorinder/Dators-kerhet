@@ -145,7 +145,6 @@ public class client {
       
       do {
           line = in.readLine();
-          System.out.println("line read: " + line);
           if (line.equals("end"))
             break;
           else if(line != null)
@@ -169,7 +168,6 @@ public class client {
       //TODO: Let doctors create new entry
       answer = read.readLine();
       if(answer.equalsIgnoreCase("r")) {
-        System.out.println("Testtttttt");
         out.println("r," +  entries.get(Integer.parseInt(index) - 1) + ",");
         out.flush();
         System.out.println(in.readLine());
@@ -191,13 +189,10 @@ public class client {
         System.out.println("Enter nurse name: ");
         String nurseName = read.readLine();
 
-        System.out.println("Enter division (divisionX): ");
-        String division = read.readLine();
-
         System.out.println("Enter information: ");
         String information = read.readLine();
 
-        out.println("c," + patientName + ";" + doctorName + ";" + nurseName + ";" + division + ";" + information + ",");
+        out.println("c," + patientName + ";" + doctorName + ";" + nurseName + ";"  + ";" + information + ",");
         out.flush();
       }
     } catch (IOException e) {

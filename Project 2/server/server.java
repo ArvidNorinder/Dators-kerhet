@@ -21,17 +21,20 @@ public class server implements Runnable {
 
   private Map<String, User> certificateToUserMap = new HashMap<>();
 
-  //TODO: A function that handles messages from the client (i.e. what to do when a client sends a message to the server)
-  //TODO: main function that starts the server
+    //TODO: Make it so that the map that contains the certificates and users is properly mapped to the List<User>
+    //TODO users, right new the Sofia in the map does not have any patients while the sofia in the users list does
 
 
   public server(ServerSocket ss) throws IOException {
     serverSocket = ss;
     newListener();
+    readEmployees();
+    readJournals();
     certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa522", new User("Government", "government"));
     certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa523", new User("Sofia", "doctor", "division1"));
-    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa524", new User("Oscar", "nurse", "division1"));
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa524", new User("Niklas", "nurse", "division1"));
     certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa525", new User("Arvid", "patient"));
+    certificateToUserMap.put("76ce524f180f52b2e9fe13e1e06b935aee0aa526", new User("Hanna", "patient"));
   }
 
   public void readJournals() throws FileNotFoundException {
@@ -47,15 +50,6 @@ public class server implements Runnable {
   public void updateFromDataBase() throws FileNotFoundException  {
     readJournals();
     readEmployees();
-  }
-
-  private void getRecordsForPatient (String patient) {
-    List<JournalEntry> entries = journalEntries.get(patient);
-    if (entries != null) {
-      for (JournalEntry entry : entries) {
-        System.out.println(entry.toString());
-      }
-    }
   }
 
   public String getCurrentDate () {
@@ -97,9 +91,7 @@ public class server implements Runnable {
 
       String clientMsg = null;
 
-      System.out.println("test " + serialNumberString);
       User us = certificateToUserMap.get(serialNumberString);
-      System.out.println(us.getRole());
     //TODO: Handle client requests below
       //first thing we get from the client is either a patient name or 
       //a division name
@@ -121,7 +113,6 @@ public class server implements Runnable {
       do { //TODO: Remember to close on other end after done.
       clientMsg = in.readLine();
       List<JournalEntry> entriesToReturn = permissionHandler.readPatientJournal(us, journalEntries.get(clientMsg));
-      System.out.println(entriesToReturn.size());
 
 
       for(JournalEntry e: entriesToReturn) {
@@ -137,7 +128,7 @@ public class server implements Runnable {
         if(msgParts[0].equals("r")) {
           for (JournalEntry e : entriesToReturn) {
             if (e.toString().equals(msgParts[1])) {
-              out.println(e.getInfo());
+              out.println("Information: " + e.getInfo());
               //TODO: Add end?
             }
           }
@@ -172,14 +163,11 @@ public class server implements Runnable {
           }
         } else if(msgParts[0].equals("c")) {
           String[] tempName = msgParts[1].split(";");
-          for (String str : tempName) {
-            System.out.println(str);
-          }
           for (User u : users) {
             if (u.getID().equals(tempName[0])) {
-              if (permissionHandler.canCreate(us, u)) {
+              if (permissionHandler.canCreate(users.get(1), u)) { //TODO: Change to dynamic user
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
-                parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], tempName[3], getCurrentDate(), msgParts[2]));
+                parser.write(new JournalEntry(tempName[0], tempName[1], tempName[2], users.get(1).getDivision(), getCurrentDate(), tempName[4]));
                 updateFromDataBase();
                 System.out.println("successfully created journal entry");
               } else {

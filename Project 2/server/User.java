@@ -79,7 +79,12 @@ public class User {
     }
 
    public String getReport (String info) {
-    return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " ";
+    if (getDivision() != null) {
+        return getRole() + " " + getID() + " in " + getDivision() +  " " + info + " ";
+    } else if (isPatient()) {
+        return getRole() + " " + getID() + " " + info + " ";
+    }
+    return getRole() + " " + info; 
    }
 
    @Override

@@ -1,5 +1,4 @@
-Arvid;patient
-Hanna;patient
 Government;government
-Sofia;doctor;division1;Arvid
-Niklas;doctor;division1;Hanna,Arvid
+Sofia;doctor;division2;Arvid
+Niklas;nurse;division1;Hanna,Arvid
+Arvid;patient
