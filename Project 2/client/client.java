@@ -149,8 +149,6 @@ public class client {
       //Tell server what we want
       out.println(msg);
       out.flush();
-
-      System.out.println("Message we want to send: " + msg);
       //server will respond with filling the buffered reader.
       List<String> entries = new ArrayList<>();
       String line;

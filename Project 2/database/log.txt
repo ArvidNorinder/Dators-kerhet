@@ -50,3 +50,13 @@ doctor Sofia in division1 Accessed record of Arvid
 doctor Sofia in division1 Accessed record of Arvid 
 2023-03-03 15:25:33; 
 doctor Sofia in division1 Accessed record of Arvid 
+2023-03-07 10:33:42; 
+doctor Sofia in division1 Accessed record of Arvid 
+2023-03-07 10:33:50; 
+doctor Sofia in division1 Accessed record of Arvid 
+2023-03-07 10:34:05; 
+doctor Sofia in division1 Tried to delete patient Arvidrecords but was denied 
+2023-03-07 10:34:44; 
+doctor Sofia in division1 Tried to delete patient Arvidrecords but was denied 
+2023-03-07 10:35:37; 
+doctor Sofia in division1 Created record of Arvid 

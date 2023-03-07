@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-Hanna;Sofia;Niklas;division1;2023:02:23;text
-Hanna;Sofia;Niklas;division1;2023:01:23;some entry info some text
-Arvid;Sofia;Niklas;division1;2023:03:03;blabla
-Arvid;Sofia;Niklas;division1;2023:03:04;testing division mechanics
-Arvid;Sofia;Niklas;division2;2023:03:03;blabla
-=======
 Hanna;Sofia;Niklas;division1;2023:02:23;info
 Hanna;Sofia;Niklas;division1;2023:02:24;info2
 Arvid;Sofia;Niklas;division1;2023:02:23;info3
 Arvid;Sofia;Niklas;division1;2023:02:24;info4
->>>>>>> e5b764e27897a29d6efdd557795e0c994eda7029
+Arvid;Sofia;Niklas;division1;2023:03:07;info5

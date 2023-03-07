@@ -137,7 +137,7 @@ public class server implements Runnable {
         } else if(msgParts[0].equals("e")) {
           for (JournalEntry e : entriesToReturn) {
             if (e.toString().equals(msgParts[1])) {
-              if (permissionHandler.canEdit(us, e)) {
+              if (permissionHandler.canEdit(users.get(1), e) || permissionHandler.canEdit(users.get(2), e)) {
                 String oldInfo = e.getInfo();
                 JournalEntry updatedJournal = new JournalEntry(e.getPatientID(), e.getDoctor(), e.getNurse(), e.getDivision(), e.getDate(), oldInfo + msgParts[2]);
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
@@ -153,7 +153,7 @@ public class server implements Runnable {
         }else if(msgParts[0].equals("d")) {
           for (JournalEntry e: entriesToReturn) {
             if (e.toString().equals(msgParts[1])) {
-              if (permissionHandler.canDelete(us, e)) {
+              if (permissionHandler.canDelete(users.get(1), e)) {
                 JournalEntryParser parser = new JournalEntryParser("database/journalEntries.txt");
                 parser.deleteJournalEntryFromFile(e);
                 updateFromDataBase();
