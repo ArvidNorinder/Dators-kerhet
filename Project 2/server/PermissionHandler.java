@@ -34,7 +34,6 @@ public class PermissionHandler {
 
         for (JournalEntry entry: entries) {
             if (user.getDivision().equals(entry.getDivision())) {
-                logger.log("Accessed record of " + entry.getPatientID(), user);
                 allowedEntries.add(entry);
             }
         }

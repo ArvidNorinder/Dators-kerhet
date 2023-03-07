@@ -120,7 +120,6 @@ public class client {
         
         printEntriesSpecifyRecord(msg, in, out, read);
         
-        System.out.println("done");
       }
       in.close();
       out.close();
@@ -145,6 +144,7 @@ public class client {
       
       do {
           line = in.readLine();
+          //System.out.println("line read: " + line);
           if (line.equals("end"))
             break;
           else if(line != null)

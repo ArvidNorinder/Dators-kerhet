@@ -128,7 +128,9 @@ public class server implements Runnable {
         if(msgParts[0].equals("r")) {
           for (JournalEntry e : entriesToReturn) {
             if (e.toString().equals(msgParts[1])) {
-              out.println("Information: " + e.getInfo());
+              if (permissionHandler.canRead(us, e)) {
+                out.println("Information: " + e.getInfo());
+              }
               //TODO: Add end?
             }
           }

@@ -2,3 +2,4 @@ Government;government
 Sofia;doctor;division2;Arvid
 Niklas;nurse;division1;Hanna,Arvid
 Arvid;patient
+Hanna;patient
