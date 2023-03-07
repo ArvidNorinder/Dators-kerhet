@@ -25,6 +25,7 @@ import java.util.List;
 
 public class client {
   public static void main(String[] args) throws Exception {
+    int wrongPassCount = 0;
 
     //TODO: Ask user for user name
     System.out.println("Enter username.");
@@ -32,6 +33,8 @@ public class client {
     Scanner scan = new Scanner(System.in);
     String userName = scan.nextLine();
     
+    boolean authenticationIssue = true;
+
     String host = null;
     int port = 9876;
     /*for (int i = 0; i < args.length; i++) {
@@ -51,25 +54,36 @@ public class client {
 
     try {
       SSLSocketFactory factory = null;
-      try {
-        char[] password = "password".toCharArray();
-        KeyStore ks = KeyStore.getInstance("JKS");
-        KeyStore ts = KeyStore.getInstance("JKS");
-        KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
-        SSLContext ctx = SSLContext.getInstance("TLSv1.2");
-        // keystore password (storepass)
+      while (authenticationIssue) {
+        System.out.println("Enter password.");
+        String passwordString = scan.nextLine();
+        try {
+          
+          char[] password = passwordString.toCharArray();
+          KeyStore ks = KeyStore.getInstance("JKS");
+          KeyStore ts = KeyStore.getInstance("JKS");
+          KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+          TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+          SSLContext ctx = SSLContext.getInstance("TLSv1.2");
+          // keystore password (storepass)
 
-        //TODO: Load in keystore depending on user name instead.
-        ks.load(new FileInputStream(userName + "keystore"), password);  
-        // truststore password (storepass)
-        ts.load(new FileInputStream("clienttruststore"), password); 
-        kmf.init(ks, password); // user password (keypass)
-        tmf.init(ts); // keystore can be used as truststore here
-        ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
-        factory = ctx.getSocketFactory();
-      } catch (Exception e) {
-        throw new IOException(e.getMessage());
+          //TODO: Load in keystore depending on user name instead.
+          ks.load(new FileInputStream(userName + "keystore"), password);
+          // truststore password (storepass)
+          ts.load(new FileInputStream("clienttruststore"), password); 
+          kmf.init(ks, password); // user password (keypass)
+          tmf.init(ts); // keystore can be used as truststore here
+          ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+          factory = ctx.getSocketFactory();
+          authenticationIssue = false;
+          } catch (Exception e) {
+            //throw new IOException(e.getMessage());
+            System.out.println("Incorrect authentication. " + (4-wrongPassCount) + " tries left.");
+            wrongPassCount++;
+            authenticationIssue = true;
+            if (wrongPassCount == 5)
+              System.exit(1);
+          }
       }
       SSLSocket socket = (SSLSocket)factory.createSocket(host, port);
       System.out.println("\nsocket before handshake:\n" + socket + "\n");
